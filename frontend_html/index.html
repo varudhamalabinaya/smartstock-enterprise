@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStock Enterprise</title>
+    <link rel="stylesheet" href="style.css?v=4">
+</head>
+
+<body>
+
+    <!-- Auth Section -->
+    <div id="auth-container">
+        <div class="card" id="login-step-1">
+            <h1 class="brand" style="margin-bottom: 0.5rem;">SmartStock</h1>
+            <p style="color: #6b7280; margin-bottom: 2rem;">Enterprise Edition</p>
+
+            <form id="mobile-form">
+                <div style="text-align: left; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">Mobile Number
+                </div>
+                <input type="tel" id="mobile-input" placeholder="99999 99999" maxlength="10" required>
+                <button type="submit" class="btn btn-primary">Continue →</button>
+            </form>
+        </div>
+
+        <div class="card hidden" id="login-step-2">
+            <h2 style="margin-bottom: 1rem;">Verify OTP</h2>
+            <p style="color: #6b7280; margin-bottom: 2rem; font-size: 0.9rem;">
+                Sent to +91 <span id="display-mobile"></span>
+            </p>
+
+            <form id="otp-form">
+                <input type="text" id="otp-input" placeholder="• • • • • •" maxlength="6"
+                    style="text-align: center; letter-spacing: 0.5rem; font-size: 1.5rem;" required>
+                <p style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 1rem;">Demo OTP: <strong>123456</strong>
+                </p>
+                <button type="submit" class="btn btn-secondary">Verify & Login</button>
+            </form>
+            <button id="back-btn"
+                style="background: none; border: none; color: #6b7280; margin-top: 1rem; cursor: pointer; text-decoration: underline;">
+                ← Change Number
+            </button>
+        </div>
+    </div>
+
+    <!-- App Section -->
+    <div id="app-container" class="hidden">
+        <header>
+            <div class="brand">SmartStock</div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="user-info">📱 <span id="user-id-display"></span></div>
+                <button id="logout-btn" style="background: none; border: 1px solid #e5e7eb; color: #6b7280;
+                    padding: 0.3rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Categories -->
+        <div class="categories" id="category-list">
+            <button class="cat-card active" data-cat="All">
+                <div class="cat-icon">🛒</div>
+                <span>All</span>
+            </button>
+            <button class="cat-card" data-cat="Groceries">
+                <div class="cat-icon">🥛</div>
+                <span>Groceries</span>
+            </button>
+            <button class="cat-card" data-cat="Fruits &amp; Vegetables">
+                <div class="cat-icon">🥦</div>
+                <span>Fruits &amp;<br>Vegetables</span>
+            </button>
+            <button class="cat-card" data-cat="Snacks">
+                <div class="cat-icon">🍟</div>
+                <span>Snacks</span>
+            </button>
+            <button class="cat-card" data-cat="Beverages">
+                <div class="cat-icon">🥤</div>
+                <span>Beverages</span>
+            </button>
+            <button class="cat-card" data-cat="Personal Care">
+                <div class="cat-icon">🧴</div>
+                <span>Personal<br>Care</span>
+            </button>
+        </div>
+
+        <!-- Products -->
+        <div class="product-grid" id="product-grid">
+            <!-- Product Cards injected here -->
+        </div>
+    </div>
+
+    <!-- Backend URL config: update BACKEND_URL after deploying to Render -->
+    <script>
+        // For local dev: leave as empty string (defaults to localhost:8080)
+        // For production: set to your Render backend URL
+        window.BACKEND_URL = '';
+    </script>
+    <script src="script.js?v=4"></script>
+</body>
+
+</html>

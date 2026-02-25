@@ -1,0 +1,379 @@
+:root {
+    --primary: #3C006B;
+    /* Deep Purple */
+    --secondary: #FF3269;
+    /* Pinkish Red */
+    --accent: #FFD700;
+    /* Gold */
+    --bg: #f3f4f6;
+    --text: #1f2937;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    padding-bottom: 80px;
+    /* Space for bottom nav or just scrolling */
+}
+
+/* Header */
+header {
+    background-color: var(--white);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.user-info {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* Auth Container */
+#auth-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--bg);
+}
+
+.card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* ── Zepto-style Category Strip ── */
+.categories {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    padding: 0;
+    background: var(--white);
+    position: sticky;
+    top: 60px;
+    z-index: 90;
+    scrollbar-width: none;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 10px 14px 8px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    min-width: 72px;
+    white-space: nowrap;
+    transition: border-color 0.15s;
+    flex-shrink: 0;
+}
+
+.cat-card.active {
+    border-bottom: 3px solid var(--primary);
+}
+
+.cat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.65rem;
+    transition: background 0.15s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+}
+
+.cat-card.active .cat-icon {
+    background: #ede9f6;
+}
+
+.cat-card:hover .cat-icon {
+    background: #ede9f6;
+}
+
+.cat-card span {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+    line-height: 1.25;
+    white-space: normal;
+    max-width: 64px;
+}
+
+.cat-card.active span {
+    color: var(--primary);
+}
+
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Mobile first: 2 cols */
+    gap: 1rem;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ── Zepto-style product card ── */
+.product-card {
+    background: var(--white);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+}
+
+/* Image wrapper — ADD button sits inside here */
+.product-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 3rem;
+}
+
+.product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+}
+
+/* ADD / action button — overlaid bottom-right of image */
+.card-add-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: #fff;
+    color: #e91e8c;
+    border: 1.5px solid #e91e8c;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 4px 14px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.15s, color 0.15s;
+    z-index: 2;
+}
+
+.card-add-btn:hover {
+    background: #e91e8c;
+    color: #fff;
+}
+
+.card-add-btn:disabled,
+.card-add-btn.out {
+    background: #f3f4f6;
+    color: #aaa;
+    border-color: #e5e7eb;
+    cursor: not-allowed;
+    font-size: 0.68rem;
+}
+
+/* In-cart state */
+.card-in-cart {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border: 1.5px solid var(--primary);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--primary);
+    z-index: 2;
+}
+
+.card-in-cart .cart-timer {
+    font-size: 0.72rem;
+    color: #ef4444;
+    font-family: monospace;
+    font-weight: 700;
+}
+
+/* Card body text area */
+.card-body {
+    padding: 0.55rem 0.65rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+}
+
+/* Green price badge */
+.card-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.price-badge {
+    background: #256fef;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 7px;
+}
+
+.product-name {
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #1a1a1a;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+}
+
+.product-meta {
+    font-size: 0.68rem;
+    color: #6b7280;
+}
+
+/* Stock alert badge */
+.stock-alert {
+    font-size: 0.65rem;
+    color: #ef4444;
+    font-weight: 700;
+    background: #fee2e2;
+    border-radius: 4px;
+    padding: 1px 5px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+/* Cart timer in card body (fallback) */
+.cart-control {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.cart-timer {
+    font-size: 0.75rem;
+    color: #ef4444;
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+/* Toast animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Category pill hover */
+.category-pill:hover:not(.active) {
+    background: #e5e7eb;
+}
