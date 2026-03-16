@@ -197,11 +197,11 @@ const ProductList = ({ userId, onCartChange }) => {
                             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.06)'; }}
                         >
                             {/* Product image */}
-                            <div style={{ position: 'relative', height: '110px', overflow: 'hidden' }}>
+                            <div style={{ position: 'relative', height: '170px', overflow: 'hidden', background: '#fff' }}>
                                 {imgSrc ? (
-                                    <img src={imgSrc} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <img src={imgSrc} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8px', boxSizing: 'border-box' }} />
                                 ) : (
-                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', background: fallback.bg }}>
+                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3.5rem', background: fallback.bg }}>
                                         {fallback.emoji}
                                     </div>
                                 )}
