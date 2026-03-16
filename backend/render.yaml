@@ -6,10 +6,14 @@ services:
     startCommand: java -jar target/enterprise-0.0.1-SNAPSHOT.jar
     envVars:
       - key: DB_URL
-        sync: false
+        sync: false          # set this in Render dashboard → Supabase JDBC URL
       - key: DB_USER
-        sync: false
+        sync: false          # set to: postgres
       - key: DB_PASSWORD
-        sync: false
+        sync: false          # set to: your Supabase password
+      - key: DB_DRIVER
+        value: org.postgresql.Driver
+      - key: DB_DIALECT
+        value: org.hibernate.dialect.PostgreSQLDialect
       - key: PORT
         value: 8080
